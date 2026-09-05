@@ -1,308 +1,113 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U Media - Jasa Desain & Percetakan</title>
-    <style>
-        :root {
-            --biru-gelap: #1e293b;
-            --ijo: #84cc16;
-            --abu: #f0f4f9;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Arial;
-        }
-
-        body {
-            background: var(--abu);
-            color: var(--biru-gelap);
-        }
-
-        /* <--- Teks default jadi biru gelap */
-        .header {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-            background: white;
-            padding: 10px;
-            border-radius: 16px;
-        }
-
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.08);
-        }
-
-        .section-title {
-            color: var(--biru-gelap);
-            font-size: 22px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .grid-produk {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .item-produk {
-            background: var(--abu);
-            padding: 14px;
-            border-radius: 10px;
-            border-left: 4px solid var(--ijo);
-            font-size: 14px;
-            font-weight: 600;
-            /* dibold dikit */
-            color: var(--biru-gelap);
-            /* <--- INI PENTING: teks jadi biru gelap */
-        }
-
-        .grid-galeri {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .item-galeri {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .item-galeri img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s;
-        }
-
-        .item-galeri:hover img {
-            transform: scale(1.05);
-        }
-
-        .label-galeri {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 10px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-        }
-
-        .popup .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .catatan {
-            text-align: center;
-            color: var(--biru-gelap);
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        /* <--- catatan juga biru gelap */
-        input[type="text"] {
-            width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            margin-bottom: 12px;
-            font-size: 15px;
-            color: var(--biru-gelap);
-        }
-
-        .btn {
-            display: block;
-            background: var(--ijo);
-            color: var(--biru-gelap);
-            text-align: center;
-            padding: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .btn:hover {
-            background: #65a30d;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 13px;
-            color: var(--biru-gelap);
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .grid-produk {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .grid-galeri {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>U Media - Jasa Desain & Percetakan</title>
+<style>
+  :root { --biru-gelap: #1e293b; --ijo: #84cc16; --abu: #f0f4f9; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial; }
+  body { background: var(--abu); color: var(--biru-gelap); }
+  .header { background: linear-gradient(135deg, #1e293b, #334155); color: white; text-align: center; padding: 30px 20px; }
+  .logo { width: 80px; height: 80px; margin-bottom: 10px; background: white; padding: 10px; border-radius: 16px; }
+  .container { padding: 20px; max-width: 1000px; margin: auto; }
+  .card { background: white; padding: 25px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(30,41,59,0.08); }
+  .section-title { color: var(--biru-gelap); font-size: 22px; margin-bottom: 15px; text-align: center; font-weight: bold; }
+  .grid-produk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .item-produk { background: var(--abu); padding: 14px; border-radius: 10px; border-left: 4px solid var(--ijo); font-size: 14px; font-weight: 600; color: var(--biru-gelap); }
+  .grid-galeri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+  .item-galeri { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); cursor: pointer; }
+  .item-galeri img { width: 100%; height: 240px; object-fit: cover; display: block; transition: transform 0.3s; }
+  .item-galeri:hover img { transform: scale(1.05); }
+  .label-galeri { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 10px; font-size: 13px; font-weight: bold; }
+  .popup { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+  .popup img { max-width: 90%; max-height: 90%; border-radius: 12px; }
+  .popup .close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+  input[type="text"] { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 12px; font-size: 15px; color: var(--biru-gelap); }
+  .btn { display: block; background: var(--ijo); color: var(--biru-gelap); text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; }
+  .footer { text-align: center; padding: 20px; font-size: 13px; color: var(--biru-gelap); opacity: 0.7; }
+  @media (max-width: 768px) { .grid-produk { grid-template-columns: repeat(2, 1fr); } .grid-galeri { grid-template-columns: repeat(2, 1fr); } }
+</style>
 </head>
-
 <body>
-    <div class="header"><img src="logo.png" alt="Logo U Media" class="logo">
-        <h1>U Media</h1>
-        <p>Jasa Desain Grafis &amp; Percetakan</p>
-    </div>
-    <div class="container">
-        <div class="card">
-            <h2 class="section-title">Kami Menerima:</h2>
-            <div class="grid-produk">
-                <div class="item-produk">🎨 Jasa ****** Grafis</div>
-                <div class="item-produk">💌 ******** ***** &amp; Khitanan</div>
-                <div class="item-produk">📢 Cetak Banner</div>
-                <div class="item-produk">🏷️ Stiker Custom</div>
-                <div class="item-produk">📄 Poster Ivory &amp; Artpaper</div>
-                <div class="item-produk">🧾 **** / Kwitansi</div>
-                <div class="item-produk">📌 Pin &amp; Ganci</div>
-                <div class="item-produk">🪪 Nametag</div>
-                <div class="item-produk">🎓 Selempang Wisuda</div>
-                <div class="item-produk">📓 Buku ******* Custom</div>
-                <div class="item-produk">🔖 Stampel</div>
-                <div class="item-produk">☕ *** Custom</div>
-                <div class="item-produk">👕 Kaos Custom</div>
-                <div class="item-produk">📖 Buku Yasin</div>
-                <div class="item-produk">🍽️ Menu Makanan</div>
-                <div class="item-produk">✨ + Masih ****** ****** lain</div>
-            </div>
-            <p class="catatan">Bisa infokan *** tanyakan kebutuhan **** ** chat WA 👇</p>
-        </div>
-        <div class="card">
-            <h2 class="section-title">📸 Portfolio ****** **** - Klik untuk Zoom</h2>
-            <div class="grid-galeri">
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_0" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Undangan Pernikahan Hijau</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_1" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Undangan Adat Jawa</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_2" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Undangan Aqiqah</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_3" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Buku Yasin &amp; Tahlil</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_4" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Yasin 1000 Hari</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_5" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Yasin Jamaah</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_6" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Desain Menu Restoran</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_7" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">Poster Makanan</div>
-                </div>
-                <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_8" style="margin: 0 auto 0 0; display: block; ">
-                    <div class="label-galeri">****** Warung Sembako</div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <h2 class="section-title">Order Sekarang</h2>
-            <p style="text-align:center; margin-bottom: 10px; color: var(--biru-gelap);">Isi **** kamu dulu ya, biar enak nyapanya 😊</p><input type="text" id="nama" placeholder="Contoh: Budi"> <a class="btn" id="waButton" href="#" target="_blank">&nbsp;Chat via WhatsApp&nbsp;</a>
-        </div>
-    </div>
-    <div class="footer">&copy; 2026 U Media. Respon cepat &bull; Revisi 2x &bull; Siap kirim</div>
-    <div id="popup" class="popup" onclick="closePopup()"><span class="close">&times;</span> <img id="popupImg"></div>
-    <script>
-        const btn = document.getElementById('waButton');
-        const inputNama = document.getElementById('nama');
-        const noWA = "6282227925706";
-        
-        function updateLink() {
-          let nama = inputNama.value || "(...isi nama dulu)";
-          let pesan = `Halo kak namaku ${nama}. Saya mau order desain kak.`;
-          btn.href = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
-        }
-        
-        inputNama.addEventListener('input', updateLink);
-        updateLink();
-        
-        function openPopup(element) {
-          document.getElementById("popup").style.display = "flex";
-          document.getElementById("popupImg").src = element.querySelector("img").src;
-        }
-        function closePopup() {
-          document.getElementById("popup").style.display = "none";
-        }
-    </script>
 
-<div style="color: red; font-size: 12px; width: 600px; margin: 0 auto; text-align: center;">Created with <a href="https://wordtohtml.net/">WordToHTML.net</a> trial.</div>
+<div class="header">
+  <img src="logo.png" alt="Logo U Media" class="logo">
+  <h1>U Media</h1>
+  <p>Jasa Desain Grafis & Percetakan</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+  <h2 class="section-title">Kami Menerima:</h2>
+  <div class="grid-produk">
+    <div class="item-produk">🎨 Jasa Desain Grafis</div>
+    <div class="item-produk">💌 Undangan Nikah & Khitanan</div>
+    <div class="item-produk">📢 Cetak Banner</div>
+    <div class="item-produk">🏷️ Stiker Custom</div>
+    <div class="item-produk">📄 Poster Ivory & Artpaper</div>
+    <div class="item-produk">🧾 Nota / Kwitansi</div>
+    <div class="item-produk">📌 Pin & Ganci</div>
+    <div class="item-produk">🪪 Nametag</div>
+    <div class="item-produk">🎓 Selempang Wisuda</div>
+    <div class="item-produk">📓 Buku Catatan Custom</div>
+    <div class="item-produk">🔖 Stampel</div>
+    <div class="item-produk">☕ Mug Custom</div>
+    <div class="item-produk">👕 Kaos Custom</div>
+    <div class="item-produk">📖 Buku Yasin</div>
+    <div class="item-produk">🍽️ Menu Makanan</div>
+    <div class="item-produk">✨ + Masih banyak produk lain</div>
+  </div>
+  <p class="catatan" style="text-align:center; margin-top:10px;">Bisa infokan dan tanyakan kebutuhan anda di chat WA 👇</p>
+</div>
+
+<div class="card">
+  <h2 class="section-title">📸 Portfolio Desain Kami - Klik untuk Zoom</h2>
+  <div class="grid-galeri">
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_0.jpg" alt="Undangan Hijau"><div class="label-galeri">Undangan Pernikahan Hijau</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_1.jpg" alt="Undangan Maroon"><div class="label-galeri">Undangan Adat Jawa</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_2.jpg" alt="Undangan Aqiqah"><div class="label-galeri">Undangan Aqiqah</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_3.jpg" alt="Buku Yasin Biru"><div class="label-galeri">Buku Yasin & Tahlil</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_4.jpg" alt="Buku Yasin Hijau"><div class="label-galeri">Yasin 1000 Hari</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_5.jpg" alt="Yasin Jamaah"><div class="label-galeri">Yasin Jamaah</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_6.jpg" alt="Menu Makanan"><div class="label-galeri">Desain Menu Restoran</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_7.jpg" alt="Menu Makanan"><div class="label-galeri">Poster Makanan</div></div>
+    <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_8.jpg" alt="Banner Sembako"><div class="label-galeri">Banner Warung Sembako</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title">Order Sekarang</h2>
+  <p style="text-align:center; margin-bottom: 10px;">Isi nama kamu dulu ya, biar enak nyapanya 😊</p>
+  <input type="text" id="nama" placeholder="Contoh: Budi">
+  <a class="btn" id="waButton" href="#" target="_blank">Chat via WhatsApp</a>
+</div>
+
+</div>
+
+<div class="footer">© 2026 U Media. Respon cepat • Revisi 2x • Siap kirim</div>
+
+<div id="popup" class="popup" onclick="closePopup()"><span class="close">&times;</span><img id="popupImg"></div>
+
+<script>
+  const btn = document.getElementById('waButton');
+  const inputNama = document.getElementById('nama');
+  const noWA = "6282227925706";
+  function updateLink() {
+    let nama = inputNama.value || "(...isi nama dulu)";
+    let pesan = `Halo kak namaku ${nama}. Saya mau order desain kak.`;
+    btn.href = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+  }
+  inputNama.addEventListener('input', updateLink);
+  updateLink();
+  function openPopup(element) {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popupImg").src = element.querySelector("img").src;
+  }
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
 </body>
-
 </html>
