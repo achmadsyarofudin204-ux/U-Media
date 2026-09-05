@@ -4,92 +4,362 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>U Media - Jasa Desain & Percetakan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --biru-gelap: #1e293b; --ijo: #84cc16; --abu: #f0f4f9; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial; }
-  body { background: var(--abu); color: var(--biru-gelap); }
-  .header { background: linear-gradient(135deg, #1e293b, #334155); color: white; text-align: center; padding: 30px 20px; }
-  .logo { width: 80px; height: 80px; margin-bottom: 10px; background: white; padding: 10px; border-radius: 16px; }
-  .container { padding: 20px; max-width: 1000px; margin: auto; }
-  .card { background: white; padding: 25px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(30,41,59,0.08); }
-  .section-title { color: var(--biru-gelap); font-size: 22px; margin-bottom: 15px; text-align: center; font-weight: bold; }
-  .grid-produk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .item-produk { background: var(--abu); padding: 14px; border-radius: 10px; border-left: 4px solid var(--ijo); font-size: 14px; font-weight: 600; color: var(--biru-gelap); }
-  .catatan { text-align:center; margin-top:10px; color: var(--biru-gelap); }
+  :root {
+    --ink: #17212c;
+    --ink-soft: #3c4a5a;
+    --paper: #f4f1e9;
+    --paper-card: #fffdf8;
+    --line: rgba(23,33,44,0.10);
+    --green: #2f7d54;
+    --green-soft: #e6f0e7;
+    --clay: #d1602f;
+    --clay-soft: #fbe7db;
+    --radius-lg: 20px;
+    --radius-sm: 12px;
+    --shadow: 0 10px 30px -14px rgba(23,33,44,0.25);
+  }
 
-  /* REVISI: PORTFOLIO JADI SLIDER GESER */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, .brand-name {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    position: relative;
+    background: var(--ink);
+    color: #f4f1e9;
+    padding: 40px 20px 56px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .header::before,
+  .header::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    z-index: -1;
+  }
+  .header::before {
+    width: 260px; height: 260px;
+    background: var(--green);
+    top: -110px; left: -60px;
+    opacity: 0.55;
+  }
+  .header::after {
+    width: 220px; height: 220px;
+    background: var(--clay);
+    bottom: -120px; right: -50px;
+    opacity: 0.5;
+  }
+  .header-inner {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .logo {
+    width: 72px;
+    height: 72px;
+    background: #fffdf8;
+    padding: 10px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .brand-name {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .header p {
+    margin-top: 6px;
+    font-size: 15px;
+    color: rgba(244,241,233,0.72);
+  }
+
+  /* ===== LAYOUT ===== */
+  .container { padding: 0 16px; max-width: 1000px; margin: -30px auto 0; }
+
+  .card {
+    background: var(--paper-card);
+    padding: 26px 22px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .section-head .bar {
+    width: 5px;
+    height: 22px;
+    border-radius: 3px;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* ===== PRODUK GRID ===== */
+  .grid-produk {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .item-produk {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--paper);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .item-produk:hover { border-color: var(--green); transform: translateY(-1px); }
+  .item-produk .icon-wrap {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--green-soft);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-produk:nth-child(3n+2) .icon-wrap { background: var(--clay-soft); color: var(--clay); }
+  .item-produk svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+  .catatan {
+    text-align: center;
+    margin-top: 16px;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  /* ===== PORTFOLIO SLIDER ===== */
   .slider-portfolio {
     display: flex;
     overflow-x: auto;
-    gap: 15px;
-    padding-bottom: 12px;
+    gap: 14px;
+    padding-bottom: 10px;
     scroll-snap-type: x mandatory;
   }
-  .slider-portfolio::-webkit-scrollbar { height: 8px; }
-  .slider-portfolio::-webkit-scrollbar-thumb { background: var(--ijo); border-radius: 10px; }
-  .item-galeri { 
-    position: relative; 
-    flex: 0 0 80%; /* 1 kartu = 80% layar HP */
-    max-width: 320px;
-    height: 380px;
-    overflow: hidden; 
-    border-radius: 12px; 
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1); 
-    cursor: pointer; 
+  .slider-portfolio::-webkit-scrollbar { height: 6px; }
+  .slider-portfolio::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
+  .item-galeri {
+    position: relative;
+    flex: 0 0 78%;
+    max-width: 300px;
+    height: 360px;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    cursor: pointer;
     scroll-snap-align: start;
+    background: var(--ink);
   }
-  .item-galeri img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
-  .item-galeri:hover img { transform: scale(1.05); }
-  .label-galeri { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; padding: 12px; font-size: 14px; font-weight: bold; }
+  .item-galeri img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+  .item-galeri:hover img { transform: scale(1.06); }
+  .label-galeri {
+    position: absolute;
+    bottom: 10px; left: 10px;
+    background: var(--paper-card);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
 
-  .popup { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-  .popup img { max-width: 90%; max-height: 90%; border-radius: 12px; }
-  .popup .close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
-  input[type="text"] { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 12px; font-size: 15px; color: var(--biru-gelap); }
-  .btn { display: block; background: var(--ijo); color: var(--biru-gelap); text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; }
-  .footer { text-align: center; padding: 20px; font-size: 13px; color: var(--biru-gelap); opacity: 0.7; }
+  /* ===== POPUP ===== */
+  .popup {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 999;
+    background: rgba(23,33,44,0.92);
+    justify-content: center;
+    align-items: center;
+  }
+  .popup img { max-width: 90%; max-height: 88%; border-radius: 14px; }
+  .popup .close {
+    position: absolute; top: 20px; right: 24px;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(244,241,233,0.12);
+    border-radius: 50%;
+    color: #f4f1e9;
+    font-size: 24px;
+    cursor: pointer;
+  }
 
-  @media (max-width: 768px) { 
-    .grid-produk { grid-template-columns: repeat(2, 1fr); } 
-    .item-galeri { flex: 0 0 85%; height: 320px; }
+  /* ===== ORDER ===== */
+  input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: var(--paper);
+    margin-bottom: 12px;
+    font: inherit;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px var(--green-soft);
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--green);
+    color: #fffdf8;
+    text-align: center;
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15.5px;
+    transition: background 0.15s ease;
+  }
+  .btn:hover { background: #266a47; }
+  .btn svg { width: 20px; height: 20px; }
+
+  .footer {
+    text-align: center;
+    padding: 26px 20px 34px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 480px) {
+    .grid-produk { grid-template-columns: repeat(1, 1fr); }
+    .item-galeri { flex: 0 0 84%; height: 300px; }
+    .brand-name { font-size: 26px; }
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <img src="logo.png" alt="Logo U Media" class="logo">
-  <h1>U Media</h1>
-  <p>Jasa Desain Grafis & Percetakan</p>
+  <div class="header-inner">
+    <img src="logo.png" alt="Logo U Media" class="logo">
+    <h1 class="brand-name">U Media</h1>
+    <p>Jasa Desain Grafis &amp; Percetakan</p>
+  </div>
 </div>
 
 <div class="container">
 
 <div class="card">
-  <h2 class="section-title">Kami Menerima:</h2>
+  <div class="section-head"><span class="bar"></span><h2 class="section-title">Kami Menerima</h2></div>
   <div class="grid-produk">
-    <div class="item-produk">🎨 Jasa Desain Grafis</div>
-    <div class="item-produk">💌 Undangan Nikah & Khitanan</div>
-    <div class="item-produk">📢 Cetak Banner</div>
-    <div class="item-produk">🏷️ Stiker Custom</div>
-    <div class="item-produk">📄 Poster Ivory & Artpaper</div>
-    <div class="item-produk">🧾 Nota / Kwitansi</div>
-    <div class="item-produk">📌 Pin & Ganci</div>
-    <div class="item-produk">🪪 Nametag</div>
-    <div class="item-produk">🎓 Selempang Wisuda</div>
-    <div class="item-produk">📓 Buku Catatan Custom</div>
-    <div class="item-produk">🔖 Stampel</div>
-    <div class="item-produk">☕ Mug Custom</div>
-    <div class="item-produk">👕 Kaos Custom</div>
-    <div class="item-produk">📖 Buku Yasin</div>
-    <div class="item-produk">🍽️ Menu Makanan</div>
-    <div class="item-produk">✨ + Masih banyak produk lain</div>
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M14.7 4.3l4 4L8 19l-5 1 1-5z"/><path d="M13.2 5.8l4 4"/></svg>
+    </span>Jasa Desain Grafis</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 7.5l9 6 9-6"/><path d="M12 6.2c-.5-1-1.6-1.6-2.6-1.2-1 .4-1.4 1.6-.7 2.4l3.3 3.4 3.3-3.4c.7-.8.3-2-.7-2.4-1-.4-2.1.2-2.6 1.2z"/></svg>
+    </span>Undangan Nikah &amp; Khitanan</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M5 3v18"/><path d="M5 4.5h13l-3 3.5 3 3.5H5"/></svg>
+    </span>Cetak Banner</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/></svg>
+    </span>Stiker Custom</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.3" cy="9.3" r="1.4"/><path d="M21 16.5l-5.2-5-4 4-2.8-2.8L3 17.5"/></svg>
+    </span>Poster Ivory &amp; Artpaper</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M6 3h12v17l-2-1.1-2 1.1-2-1.1-2 1.1-2-1.1-2 1.1V3z"/><path d="M9 8.5h6M9 12.5h6"/></svg>
+    </span>Nota / Kwitansi</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4.5"/><path d="M12 13v7"/><path d="M9.5 17.5h5"/></svg>
+    </span>Pin &amp; Ganci</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><rect x="5" y="7.5" width="14" height="12" rx="2.5"/><circle cx="12" cy="4.3" r="1.3"/><path d="M12 5.6v1.9"/><path d="M8.5 12.5h7M8.5 15.5h4.5"/></svg>
+    </span>Nametag</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M6 3l14 15"/><path d="M9.5 3l-3 3.2"/><path d="M17 15.8l3 3.2"/><circle cx="18.5" cy="19.5" r="2"/></svg>
+    </span>Selempang Wisuda</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><rect x="5.5" y="3" width="14" height="18" rx="1.6"/><path d="M5.5 6.5h2.2M5.5 9.5h2.2M5.5 12.5h2.2M5.5 15.5h2.2M5.5 18.5h2.2"/><path d="M10.5 7h6M10.5 11h6M10.5 15h4"/></svg>
+    </span>Buku Catatan Custom</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M9.5 21v-2.6a2.5 2.5 0 0 1 5 0V21"/><path d="M6.5 12.2h11l-1-5.2h-9z"/><path d="M12 7V3.2"/></svg>
+    </span>Stampel</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M4.5 6h11v9.5A3.5 3.5 0 0 1 12 19H8a3.5 3.5 0 0 1-3.5-3.5z"/><path d="M15.5 8.3h1.7a2.2 2.2 0 0 1 0 4.4h-1.7"/><path d="M8.3 3.2c0 .9-1 .9-1 1.9M11.9 3.2c0 .9-1 .9-1 1.9"/></svg>
+    </span>Mug Custom</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M8.2 4L4.5 6.8l1.8 2.7 2-1V19.5h7.4V8.5l2 1 1.8-2.7L15.8 4l-2 1.7h-3.6z"/></svg>
+    </span>Kaos Custom</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 5.3s-3-1.8-8-1.8v14.3c5 0 8 1.8 8 1.8s3-1.8 8-1.8V3.5c-5 0-8 1.8-8 1.8z"/><path d="M12 5.3v14.3"/></svg>
+    </span>Buku Yasin</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M5.5 3v7a1.6 1.6 0 0 0 1.6 1.6M8.5 3v7a1.6 1.6 0 0 1-1.6 1.6M7 11.6V21M16.5 3c-1.3 1.6-1.3 4.7-1.3 6.3S17 12 17 12v9"/></svg>
+    </span>Menu Makanan</div>
+
+    <div class="item-produk"><span class="icon-wrap">
+      <svg viewBox="0 0 24 24"><path d="M12 4v6M12 14v6M4 12h6M14 12h6"/></svg>
+    </span>+ Masih banyak produk lain</div>
   </div>
-  <p class="catatan">Bisa infokan dan tanyakan kebutuhan anda di chat WA 👇</p>
+  <p class="catatan">Bisa infokan dan tanyakan kebutuhan anda di chat WA di bawah 👇</p>
 </div>
 
 <div class="card">
-  <h2 class="section-title">📸 Portfolio Desain Kami - Geser →</h2>
+  <div class="section-head"><span class="bar"></span><h2 class="section-title">Portfolio Desain Kami — geser →</h2></div>
   <div class="slider-portfolio">
     <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_0.jpg" alt="Undangan Hijau"><div class="label-galeri">Desain Minimalis</div></div>
     <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_1.jpg" alt="Undangan Maroon"><div class="label-galeri">Desain Minimalis</div></div>
@@ -104,17 +374,23 @@
 </div>
 
 <div class="card">
-  <h2 class="section-title">Order Sekarang</h2>
-  <p style="text-align:center; margin-bottom: 10px;">Isi nama kamu dulu ya, biar enak nyapanya 😊</p>
+  <div class="section-head"><span class="bar"></span><h2 class="section-title">Order Sekarang</h2></div>
+  <p style="margin-bottom: 12px; color: var(--ink-soft); font-size: 14px;">Isi nama kamu dulu ya, biar enak nyapanya 😊</p>
   <input type="text" id="nama" placeholder="Contoh: Budi">
-  <a class="btn" id="waButton" href="#" target="_blank">Chat via WhatsApp</a>
+  <a class="btn" id="waButton" href="#" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.2.2-.4.1-.1 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.3.5.6.2 1.1.1 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
+    Chat via WhatsApp
+  </a>
 </div>
 
 </div>
 
 <div class="footer">© 2026 U Media. Respon cepat • Revisi 2x • Siap kirim</div>
 
-<div id="popup" class="popup" onclick="closePopup()"><span class="close">&times;</span><img id="popupImg"></div>
+<div id="popup" class="popup" onclick="closePopup()">
+  <span class="close">&times;</span>
+  <img id="popupImg">
+</div>
 
 <script>
   const btn = document.getElementById('waButton');
