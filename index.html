@@ -15,18 +15,44 @@
   .section-title { color: var(--biru-gelap); font-size: 22px; margin-bottom: 15px; text-align: center; font-weight: bold; }
   .grid-produk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .item-produk { background: var(--abu); padding: 14px; border-radius: 10px; border-left: 4px solid var(--ijo); font-size: 14px; font-weight: 600; color: var(--biru-gelap); }
-  .grid-galeri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-  .item-galeri { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); cursor: pointer; }
-  .item-galeri img { width: 100%; height: 240px; object-fit: cover; display: block; transition: transform 0.3s; }
+  .catatan { text-align:center; margin-top:10px; color: var(--biru-gelap); }
+
+  /* REVISI: PORTFOLIO JADI SLIDER GESER */
+  .slider-portfolio {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+  }
+  .slider-portfolio::-webkit-scrollbar { height: 8px; }
+  .slider-portfolio::-webkit-scrollbar-thumb { background: var(--ijo); border-radius: 10px; }
+  .item-galeri { 
+    position: relative; 
+    flex: 0 0 80%; /* 1 kartu = 80% layar HP */
+    max-width: 320px;
+    height: 380px;
+    overflow: hidden; 
+    border-radius: 12px; 
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1); 
+    cursor: pointer; 
+    scroll-snap-align: start;
+  }
+  .item-galeri img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
   .item-galeri:hover img { transform: scale(1.05); }
-  .label-galeri { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 10px; font-size: 13px; font-weight: bold; }
+  .label-galeri { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; padding: 12px; font-size: 14px; font-weight: bold; }
+
   .popup { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
   .popup img { max-width: 90%; max-height: 90%; border-radius: 12px; }
   .popup .close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
   input[type="text"] { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ccc; margin-bottom: 12px; font-size: 15px; color: var(--biru-gelap); }
   .btn { display: block; background: var(--ijo); color: var(--biru-gelap); text-align: center; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; }
   .footer { text-align: center; padding: 20px; font-size: 13px; color: var(--biru-gelap); opacity: 0.7; }
-  @media (max-width: 768px) { .grid-produk { grid-template-columns: repeat(2, 1fr); } .grid-galeri { grid-template-columns: repeat(2, 1fr); } }
+
+  @media (max-width: 768px) { 
+    .grid-produk { grid-template-columns: repeat(2, 1fr); } 
+    .item-galeri { flex: 0 0 85%; height: 320px; }
+  }
 </style>
 </head>
 <body>
@@ -59,12 +85,12 @@
     <div class="item-produk">🍽️ Menu Makanan</div>
     <div class="item-produk">✨ + Masih banyak produk lain</div>
   </div>
-  <p class="catatan" style="text-align:center; margin-top:10px;">Bisa infokan dan tanyakan kebutuhan anda di chat WA 👇</p>
+  <p class="catatan">Bisa infokan dan tanyakan kebutuhan anda di chat WA 👇</p>
 </div>
 
 <div class="card">
-  <h2 class="section-title">📸 Portfolio Desain Kami - Klik untuk Zoom</h2>
-  <div class="grid-galeri">
+  <h2 class="section-title">📸 Portfolio Desain Kami - Geser →</h2>
+  <div class="slider-portfolio">
     <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_0.jpg" alt="Undangan Hijau"><div class="label-galeri">Undangan Pernikahan Hijau</div></div>
     <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_1.jpg" alt="Undangan Maroon"><div class="label-galeri">Undangan Adat Jawa</div></div>
     <div class="item-galeri" onclick="openPopup(this)"><img src="wa_image_4441258536759865986_2.jpg" alt="Undangan Aqiqah"><div class="label-galeri">Undangan Aqiqah</div></div>
